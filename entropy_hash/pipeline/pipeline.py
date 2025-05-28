@@ -59,7 +59,7 @@ class EntropyHash:
 
         return output_vectors
 
-    def batch(self, docs: List[str]):
+    def batch(self, docs: List[str], binarization: bool = False):
         preprocessed_tensors = [
             transform_text(doc, context_window=self.context_window, dtype=self.dtype)
             for doc in docs
@@ -72,8 +72,7 @@ class EntropyHash:
                 batch_tensors = preprocessed_tensors[i : i + self.max_doc_shard]
                 batch = torch.cat(batch_tensors, dim=0)
                 batch = self.network(batch, len(batch_tensors))
-                batch = bin_hash(batch)
-                outputs.append(batch)
+                outputs.append(bin_hash(batch) if binarization else batch)
 
         return [vec for shard in outputs for vec in shard]
 
