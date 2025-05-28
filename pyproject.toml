@@ -1,6 +1,6 @@
 [project]
 name = "entropy-hash"
-version = "0.1.1"
+version = "0.1.2"
 description = "EntropyHash: near document duplicate detection algorithm"
 authors = [{ name = "Saeed Dehqan", email = "saeeddhqan@gmail.com" }]
 readme = "README.md"

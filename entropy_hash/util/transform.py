@@ -15,7 +15,7 @@ def transform_text(
 
     n = ascii_codes.size(0)
     if n == 0:
-        return ascii_codes
+        return ascii_codes.to(device)
 
     remainder = n % context_window
     if remainder != 0:
