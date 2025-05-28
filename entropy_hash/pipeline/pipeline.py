@@ -11,18 +11,16 @@ from entropy_hash.util.hashing import bin_hash
 from entropy_hash.util.rand_docs import generate_similar_documents
 from entropy_hash.util.transform import transform_text
 
-seed = 1234
 
-
-def set_seed(seed: int):
+def set_seed(seed: int = 1234):
     random.seed(seed)
     numpy.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
 
-
-set_seed(seed)
+if False: # during benchmarking
+    set_seed(seed)
 
 
 class EntropyHash:
